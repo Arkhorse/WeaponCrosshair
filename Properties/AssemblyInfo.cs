@@ -20,9 +20,6 @@ using MelonLoader;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0c36626e-9dc5-47c0-b347-6fc15d135b60")]
-
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
@@ -33,7 +30,7 @@ using MelonLoader;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0")]
-[assembly: AssemblyFileVersion("2.0.0")]
-[assembly: MelonInfo(typeof(WeaponCrosshair.Implementation), "WeaponCrosshair", "2.0.0", "AlexTheRegent, ds5678")]
+[assembly: AssemblyVersion("2.0.1")]
+[assembly: AssemblyFileVersion("2.0.1")]
+[assembly: MelonInfo(typeof(WeaponCrosshair.Implementation), "WeaponCrosshair", "2.0.1", "AlexTheRegent, ds5678, The Illusion")]
 [assembly: MelonGame("Hinterland", "TheLongDark")]

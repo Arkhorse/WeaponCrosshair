@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MelonLoader;
-using UnityEngine;
-using Harmony;
+﻿using MelonLoader;
+using HarmonyLib;
+using Il2Cpp;
 
 namespace WeaponCrosshair
 {
-    public class Implementation : MelonMod
+    internal class Implementation : MelonMod
     {
-        public override void OnApplicationStart()
+        public override void OnInitializeMelon()
         {
-            base.OnApplicationStart();
-            Debug.Log($"[{Info.Name}] Version {Info.Version} loaded!");
+            MelonLogger.Msg($"[{Info.Name}] Version {Info.Version} loaded!");
             Settings.OnLoad();
         }
     }
 
-    [HarmonyPatch(typeof(HUDManager), "UpdateCrosshair")]
-    public class WeaponCrosshairUpdate
+    [HarmonyPatch(typeof(HUDManager), nameof(HUDManager.UpdateCrosshair))]
+    internal class HUDManager_UpdateCrosshair
     {
-        public static void Postfix(HUDManager __instance)
+        private static void Postfix(HUDManager __instance)
         {
             if (GameManager.GetPlayerManagerComponent().PlayerIsZooming())
             {
@@ -33,8 +27,8 @@ namespace WeaponCrosshair
                 if ( showForStoneItem || showForGunItem || showForBowItem )
                 {
                     //MelonLoader.MelonLogger.Log("Attempting to show crosshair");
-                    Utils.SetActive(InterfaceManager.m_Panel_HUD.m_Sprite_Crosshair.gameObject, true);
-                    InterfaceManager.m_Panel_HUD.m_Sprite_Crosshair.alpha = 1f;
+                    Utils.SetActive(InterfaceManager.GetPanel<Panel_HUD>().m_Sprite_Crosshair.gameObject, true);
+                    InterfaceManager.GetPanel<Panel_HUD>().m_Sprite_Crosshair.alpha = 1f;
                 }
             }
         }
